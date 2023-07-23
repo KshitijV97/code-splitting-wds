@@ -1,3 +1,31 @@
+import React from "react";
+import AdminData from "../AdminData/AdminData";
+import sum from "../../functions/sum"; // Very heavy function, No need to load this unless user clicks on Button
+
+
+function addTwo() {
+	alert(sum(2, 2));
+}
+
 export default function Home() {
-	return <div>Home</div>;
+	const [isAdmin, setAdmin] = React.useState(false);
+
+	function toggleAdmin() {
+		setAdmin((prev) => !prev);
+	}
+
+	return (
+		<div>
+			<h1>This is Home!!!</h1>
+			<br />
+			<br />
+			<button onClick={addTwo}>Add 2 with Two</button>
+			<br />
+			<br />
+			<button onClick={toggleAdmin}> admin</button>
+			<br />
+			<br />
+			{isAdmin ? <AdminData /> : <h2>You are not an admin </h2>}
+		</div>
+	);
 }
