@@ -9,3 +9,7 @@ Currently, two official plugins are available:
 
 docker build -t code-splitting-wds .
 docker run -p 3000:80 code-splitting-wds
+
+OR
+
+docker-compose up
