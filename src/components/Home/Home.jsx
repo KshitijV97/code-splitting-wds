@@ -1,10 +1,13 @@
 import React from "react";
 import AdminData from "../AdminData/AdminData";
-import sum from "../../functions/sum"; // Very heavy function, No need to load this unless user clicks on Button
+// import sum from "../../functions/sum"; // Very heavy function, No need to load this unless user clicks on Button
 
-
+// Dynamic import
+// Only imports when someone tries to use it on the page
 function addTwo() {
-	alert(sum(2, 2));
+	import("../../functions/sum").then((module) => {
+		alert(module.sum(2, 2));
+	});
 }
 
 export default function Home() {
