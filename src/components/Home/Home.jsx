@@ -1,5 +1,5 @@
 import React from "react";
-import AdminData from "../AdminData/AdminData";
+const AdminData = React.lazy(() => import("../AdminData/AdminData"));
 // import sum from "../../functions/sum"; // Very heavy function, No need to load this unless user clicks on Button
 
 // Dynamic import
@@ -28,7 +28,9 @@ export default function Home() {
 			<button onClick={toggleAdmin}> admin</button>
 			<br />
 			<br />
-			{isAdmin ? <AdminData /> : <h2>You are not an admin </h2>}
+			<React.Suspense fallback={<h1>Loading admin data.....</h1>}>
+				{isAdmin ? <AdminData /> : <h2>You are not an admin </h2>}
+			</React.Suspense>
 		</div>
 	);
 }
